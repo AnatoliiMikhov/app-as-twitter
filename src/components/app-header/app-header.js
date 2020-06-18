@@ -1,6 +1,8 @@
 import React from "react";
 
-const AppHeader = ()=>{
+import "./app-header.css";
+
+const AppHeader = () => {
 	return (
 		<div className="app-header d-flex">
 			<h1>Anatolii Mikhov</h1>
