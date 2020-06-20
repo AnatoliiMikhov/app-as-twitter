@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
-// /* eslint-disable react/prop-types */
 import React from "react";
 
-import "./post-list-item.css";
+import "./post-list-item.scss";
 
 export default class PostListItem extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			important: false,
+			important: this.props.important,
 			like: false
 		};
 		this.onImportant = this.onImportant.bind(this);
