@@ -1,35 +1,74 @@
+/* eslint-disable react/prop-types */
+// /* eslint-disable react/prop-types */
 import React from "react";
 
 import "./post-list-item.css";
 
-const PostListItem = () => {
-	return (
-		<li className="app-list-item d-flex justify-content-between">
+export default class PostListItem extends React.Component {
 
-			<span className="app-list-item-label">
-				Hello react
-			</span>
+	constructor(props) {
+		super(props);
+		this.state = {
+			important: false,
+			like: false
+		};
+		this.onImportant = this.onImportant.bind(this);
+		this.onLike = this.onLike.bind(this);
+	}
 
-			<div className="d-flex justify-content-center align-items-center">
+	onImportant() {
+		this.setState(({important}) => ({
+			important: !important
+		}));
+	}
 
-				<button
-					type="button"
-					className="btn-star btn-sm">
-					<i className="fa fa-star"></i>
-				</button>
+	onLike() {
+		this.setState(({like}) => ({
+			like: !like
+		}));
+	}
 
-				<button
-					type="button"
-					className="btn-trash btn-sm">
-					<i className="fa fa-trash-o"></i>
-				</button>
+	render() {
+		const {label} = this.props; // TODO fix eslint prop-types
+		const {important, like} = this.state;
 
-				<i className="fa fa-heart"></i>
+		let classNames = "app-list-item d-flex justify-content-between";
 
+		if (important) {
+			classNames += " important";
+		}
+
+		if (like) {
+			classNames += " like";
+		}
+
+		return (
+			<div className={classNames}>
+				<span
+					className="app-list-item-label"
+					onClick={this.onLike}
+				>
+					{label}
+				</span>
+
+				<div className="d-flex justify-content-center align-items-center">
+					<button
+						type="button"
+						className="btn-star btn-sm"
+						onClick={this.onImportant}
+					>
+						<i className="fa fa-star"></i>
+					</button>
+
+					<button type="button"
+						className="btn-trash btn-sm"
+					>
+						<i className="fa fa-trash-o"></i>
+					</button>
+
+					<i className="fa fa-heart"></i>
+				</div>
 			</div>
-
-		</li>
-	);
-};
-
-export default PostListItem;
+		);
+	}
+}
