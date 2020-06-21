@@ -3,9 +3,7 @@ import React from "react";
 import PostListItem from "../post-list-item";
 import "./post-list.css";
 
-
-
-const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
+const PostList = ({posts, onDelete, onToggleItemProperty}) => {
 	// eslint-disable-next-line
 	const postElement = posts.map((item) => {
 		if (typeof item === "object" && isEmpty(item)) {
@@ -16,8 +14,8 @@ const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
 					<PostListItem
 						{...itemProps}
 						onDelete={() => onDelete(id)}
-						onToggleImportant={() => onToggleImportant(id)}
-						onToggleLiked={() => onToggleLiked(id)}
+						onToggleLiked={() => onToggleItemProperty(id, "like")}
+						onToggleImportant={() => onToggleItemProperty(id, "important")}
 					/>
 				</li>
 			);

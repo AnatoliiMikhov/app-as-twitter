@@ -38,8 +38,7 @@ export default class App extends Component {
 
 		this.deleteItem = this.deleteItem.bind(this);
 		this.addItem = this.addItem.bind(this);
-		this.onToggleImportant = this.onToggleImportant.bind(this);
-		this.onToggleLiked = this.onToggleLiked.bind(this);
+		this.onToggleItemProperty = this.onToggleItemProperty.bind(this);
 	}
 
 	deleteItem(id) {
@@ -51,12 +50,7 @@ export default class App extends Component {
 				data: newData
 			};
 		});
-		console.log(id);
 	}
-
-	/* idGenerator() {
-		return "_" + Math.random().toString(36).substr(2, 9);
-	} */
 
 	addItem(body) {
 		const newItem = {
@@ -71,27 +65,19 @@ export default class App extends Component {
 				data: newData
 			};
 		});
-		console.log(newItem.id);
 	}
 
-	onToggleImportant(id) {
+	onToggleItemProperty(id, property) {
 		this.setState(({data}) => {
 			const index = data.findIndex(elem => elem.id === id);
-			const old = data[index];
-			const newItem = {...old, important: !old.important};
-			const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-			return {
-				data: newArr
-			};
-		});
-	}
 
-	onToggleLiked(id) {
-		this.setState(({data}) => {
-			const index = data.findIndex(elem => elem.id === id);
 			const old = data[index];
-			const newItem = {...old, like: !old.like};
-			const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+			const newItem = {...old};
+			newItem[property] = !old[property];
+			const before = data.slice(0, index);
+			const after = data.slice(index + 1);
+			const newArr = [...before, newItem, ...after];
+
 			return {
 				data: newArr
 			};
@@ -119,8 +105,7 @@ export default class App extends Component {
 
 				<PostList posts={this.state.data}
 					onDelete={this.deleteItem}
-					onToggleImportant={this.onToggleImportant}
-					onToggleLiked={this.onToggleLiked}
+					onToggleItemProperty={this.onToggleItemProperty}
 				/>
 
 				<PostAddForm onAdd={this.addItem} />
