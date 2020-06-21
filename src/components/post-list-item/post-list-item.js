@@ -9,7 +9,7 @@ export default class PostListItem extends React.Component {
 		super(props);
 		this.state = {
 			important: this.props.important,
-			like: false
+			like: false,
 		};
 		this.onImportant = this.onImportant.bind(this);
 		this.onLike = this.onLike.bind(this);
@@ -17,18 +17,18 @@ export default class PostListItem extends React.Component {
 
 	onImportant() {
 		this.setState(({important}) => ({
-			important: !important
+			important: !important,
 		}));
 	}
 
 	onLike() {
 		this.setState(({like}) => ({
-			like: !like
+			like: !like,
 		}));
 	}
 
 	render() {
-		const {label} = this.props; // TODO fix eslint prop-types
+		const {label, onDelete} = this.props; // TODO fix eslint prop-types
 		const {important, like} = this.state;
 
 		let classNames = "app-list-item d-flex justify-content-between";
@@ -59,8 +59,10 @@ export default class PostListItem extends React.Component {
 						<i className="fa fa-star"></i>
 					</button>
 
-					<button type="button"
+					<button
+						type="button"
 						className="btn-trash btn-sm"
+						onClick={onDelete}
 					>
 						<i className="fa fa-trash-o"></i>
 					</button>

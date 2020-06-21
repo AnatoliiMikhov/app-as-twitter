@@ -1,8 +1,9 @@
 import React from "react";
 import "./app-header.css";
 
+// stylization with styled-components START
+// import styled from "styled-components";
 /*
-import styled from "styled-components";
 const Header = styled.div`
 	display: flex;
 	align-items: flex-end;
@@ -20,6 +21,7 @@ const Header = styled.div`
 	}
 `;
  */
+// stylization with styled-components END
 
 const AppHeader = () => {
 	return (

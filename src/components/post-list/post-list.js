@@ -5,7 +5,7 @@ import "./post-list.css";
 
 
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
 	// eslint-disable-next-line
 	const postElement = posts.map((item) => {
 		if (typeof item === "object" && isEmpty(item)) {
@@ -13,7 +13,11 @@ const PostList = ({posts}) => {
 
 			return (
 				<li key={id} className="list-group-item">
-					<PostListItem {...itemProps} />
+					<PostListItem
+						{...itemProps}
+						onDelete={() => onDelete(id)
+						}
+					/>
 				</li>
 			);
 		}
