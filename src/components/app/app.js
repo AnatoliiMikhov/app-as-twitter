@@ -6,10 +6,10 @@ import PostStatusFilter from "../post-status-filter";
 import PostList from "../post-list";
 import PostAddForm from "../post-add-form";
 
-// import "./app.css";
-import styled from "styled-components";
+import "./app.css";
 
-const AppBlock = styled.div`
+// import styled from "styled-components";
+/* const AppBlock = styled.div`
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	margin: 0 auto;
@@ -18,9 +18,11 @@ const AppBlock = styled.div`
 	padding: 50px 20px 0;
 `;
 
-/* const AnotherAppBlock = styled(AppBlock)`
-	background-color: grey;
+const SearchPanelWrapper = styled.div`
+	display: flex;
+	margin: 1rem 0;
 `; */
+
 
 const App = () => {
 	const data = [
@@ -30,7 +32,7 @@ const App = () => {
 	];
 
 	return (
-		<AppBlock>
+		<div className="app">
 			<AppHeader />
 			<div className="search-panel d-flex">
 				<SearchPanel />
@@ -38,7 +40,7 @@ const App = () => {
 			</div>
 			<PostList posts={data} />
 			<PostAddForm />
-		</AppBlock>
+		</div>
 	);
 };
 

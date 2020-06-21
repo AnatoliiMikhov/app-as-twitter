@@ -1,8 +1,8 @@
 import React from "react";
+import "./app-header.css";
 
+/*
 import styled from "styled-components";
-// import "./app-header.css";
-
 const Header = styled.div`
 	display: flex;
 	align-items: flex-end;
@@ -19,13 +19,14 @@ const Header = styled.div`
 		color: grey;
 	}
 `;
+ */
 
 const AppHeader = () => {
 	return (
-		<Header colored>
+		<div className="app-header d-flex">
 			<h1>Anatolii Mikhov</h1>
 			<h2>5 записей, из них понравилось 0</h2>
-		</Header>
+		</div>
 	);
 };
 
