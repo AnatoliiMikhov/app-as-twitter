@@ -21,7 +21,7 @@ export default class PostListItem extends React.Component {
 		return (
 			<div className={classNames}>
 				<span
-					className="app-list-item-label"
+					className="app-list-item-label w-100"
 					onClick={onToggleLiked}
 				>
 					{label}
